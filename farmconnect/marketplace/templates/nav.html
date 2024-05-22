@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">FarmConnect</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'product_list' %}active{% endif %}" href="{% url 'product_list' %}">Products</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name in 'login' or request.resolver_match.url_name == 'register' %}active{% endif %}" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Account
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
+                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'register' %}active{% endif %}" href="{% url 'register' %}">Register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
